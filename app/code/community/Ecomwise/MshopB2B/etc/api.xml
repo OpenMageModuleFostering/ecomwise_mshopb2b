@@ -1,0 +1,427 @@
+<?xml version="1.0"?>
+<config>
+    <api>
+		<resources>
+			<!-- mamut methods -->
+			<mshop_mamut translate="title" module="mshopb2b">
+				<model>mshopb2b/api_mamut_api</model>
+                <title>Mamut Methods Api</title>
+                <acl>mshopb2b/mamut</acl>
+                <methods>
+                	<setMamutId translate="title" module="mshopb2b">
+                        <title>Set the mamut ID for multiple customers</title>
+                        <method>setMamutId</method>
+                    </setMamutId>
+                    
+                    <removeMamutMapping translate="title" module="mshopb2b">
+                        <title>Remove mamut to customer mapping</title>
+                        <method>removeMamutMapping</method>
+                    </removeMamutMapping>
+                    
+                </methods>
+                <faults>
+                	<mapping_allready_exists>
+                        <code>100</code>
+                        <message>There is allreday mapping with this customer id and mamut id</message>
+                    </mapping_allready_exists>
+                    <customer_id_allready_exists>
+                        <code>101</code>
+                        <message>Customer id is allready mapped to mamut id</message>
+                    </customer_id_allready_exists>
+                   <mapping_not_found>
+                        <code>102</code>
+                        <message>Mapping for provided id's was not found</message>
+                    </mapping_not_found>
+                    <customer_id_not_exists>
+                        <code>103</code>
+                        <message>There is no mamut id mapped to this customer id</message>
+                    </customer_id_not_exists>
+                    
+                    
+                    <invalid_data_provided>
+                    	<code>104</code>
+                        <message>Invalid data provided</message>
+                    </invalid_data_provided>
+                
+                	<customer_not_exists_for_mamut_id>
+                        <code>105</code>
+                        <message>There is no magento customer mapped to this mamut id</message>
+                    </customer_not_exists_for_mamut_id>
+                    
+                    <mamut_product_not_exists>
+                    	<code>106</code>
+                        <message>Product does not exists in magento</message>
+                    </mamut_product_not_exists>
+                    
+                    <problems_creating_order>
+                    	<code>107</code>
+                    	<message>Problems occured during creation of the order</message>
+                    </problems_creating_order>
+                    
+                    <problems_generating_invoice_for_order>
+                    	<code>108</code>
+                    	<message>Problem genearting invoice for this order</message>
+                    </problems_generating_invoice_for_order>
+                    
+                    <can_not_create_product>
+                    	<code>110</code>
+                    	<message>Problem creating simple product for order</message>
+                    </can_not_create_product>
+                    
+                    <magento_customer_not_exists>
+                    	<code>111</code>
+                    	<message>There is no magento customer with this ID</message>
+                    </magento_customer_not_exists>
+                    
+                  </faults>
+			</mshop_mamut>
+			<!-- end of mamut methods -->
+			
+			<!-- mshop credit methods -->
+			<mshop_credit translate="title" module="mshopb2b">
+				<model>mshopb2b/api_credit_api</model>
+                <title>Credit Methods Api</title>
+                <acl>mshopb2b/credit</acl>
+                <methods>
+                	<stop translate="title" module="mshopb2b">
+                        <title>Stop Customer from shopping in magento</title>
+                        <method>block</method>  
+                    </stop>
+                    
+                    <unblock translate="title" module="mshopb2b">
+                        <title>Remove customer shopping ban in magento</title>
+                        <method>unblock</method>
+                    </unblock>
+                    
+                </methods>
+                <faults>
+                    <email_not_sent>
+                    	<code>100</code>
+                        <message>Email not sent</message>
+                    </email_not_sent>
+                	<customer_not_exists>
+                        <code>100</code>
+                        <message>Customer with provided email not exists</message>
+                    </customer_not_exists>
+                    <customer_allready_blocked>
+                    	<code>101</code>
+                        <message>Customer with this email is allready blocked</message>
+                    </customer_allready_blocked>
+                    
+                    <customer_allready_unblocked>
+                    	<code>102</code>
+                        <message>Customer with this email is allready unblocked</message>
+                    </customer_allready_unblocked>
+               </faults>
+			</mshop_credit>	
+			<!-- end mshop credit methods -->
+			
+			<!-- customer methods -->
+			<mshop_m_customer translate="title" module="mshopb2b">
+				<model>mshopb2b/api_customer_api</model>
+                <title>Customer Methods Api</title>
+                <acl>mshopb2b/customer</acl>
+                <methods>
+                	<updatePreferedLocale translate="title" module="mshopb2b">
+                        <title>Update Customer prefered locale</title>
+                        <method>updatePreferedLocale</method>
+                    </updatePreferedLocale>
+                    
+                	<createCustomerGroup translate="title" module="mshopb2b">
+                        <title>Create Customer Group by Name for given Tax Class Id</title>
+                        <method>createCustomerGroup</method>
+                    </createCustomerGroup>
+                    
+                    <assignCustomerToGroup translate="title" module="mshopb2b">
+                        <title>Assigns a customer to a given customer group</title>
+                        <method>assignCustomerToGroup</method>
+                    </assignCustomerToGroup>
+                    
+                    <update translate="title" module="mshopb2b">
+                        <title>Update customer information and invoice and billing adress</title>
+                        <method>update</method>
+                    </update>
+                    
+                    <create translate="title" module="mshopb2b">
+                    	<title>Create customer with invoice and billing adress</title>
+                        <method>create</method>
+                    </create>
+                    
+                    <getCustomersChangedSince>
+                    	<title>Get list of customers updated since date</title>
+                    	<method>updatedSince</method>
+                    </getCustomersChangedSince>
+                    
+                
+                </methods>
+                <faults module="mshopb2b">
+                    <unknown_mcustomer>
+                        <code>101</code>
+                        <message>Non existing Magento customer, invalid customer ID provided</message>
+                    </unknown_mcustomer>
+                    <unknown_mgroup>
+                        <code>102</code>
+                        <message>Non existing customer group, invalid ID provided</message>
+                    </unknown_mgroup>
+                    <unknown_mtaxclass>
+                        <code>103</code>
+                        <message>Non existing tax class, invalid ID provided</message>
+                    </unknown_mtaxclass>
+                    <customer_not_exists_for_mamut_id>
+                        <code>104</code>
+                        <message>There is no magento customer mapped to this mamut id</message>
+                    </customer_not_exists_for_mamut_id>
+                    <customer_information_update_failed>
+                        <code>105</code>
+                        <message>Cutsomer data update was not successful</message>
+                    </customer_information_update_failed>
+                    <address_information_update_failed>
+                        <code>106</code>
+                        <message>Address data update was not successful</message>
+                    </address_information_update_failed>
+                    
+                    <customer_creation_failed>
+                    	<code>107</code>
+                        <message>Customer creation failed</message>
+                    </customer_creation_failed>
+                    <mamut_id_not_set_for_customer>
+                    	<code>108</code>
+                        <message>Mamut id was not set for customer</message>
+                    </mamut_id_not_set_for_customer>
+                    
+                    <address_creation_failed>
+                    	<code>109</code>
+                    	<message>Address creation for customer failed</message>
+                    </address_creation_failed>
+                    <mapped_customer_not_exists_for_mamut_id>
+                    	<code>110</code>
+                    	<message>There is customer mapped to this mamut id, but customer not exists in magneto</message>
+                    </mapped_customer_not_exists_for_mamut_id>  
+                    <customer_create_incomplete_data>
+                    	<code>111</code>
+                    	<message>Incomplete customer creation data. Missing parts: </message>
+                    </customer_create_incomplete_data>
+                    <customer_create_customer_allready_exists>
+                    		<code>112</code>
+                    	<message>Customer with this email for this website already exists</message>
+                    </customer_create_customer_allready_exists>
+
+                </faults>
+			</mshop_m_customer>
+			<!-- end of customer methods -->
+			
+			<!-- promotions methods -->
+			<mshop_promotions translate="title" module="mshopb2b">
+                <model>mshopb2b/api_promotions_api</model>
+                <title>Promotions  Methods Api</title>
+                <acl>mshopb2b/promotions</acl>
+                <methods>
+                    <checkCreateFixedPriceForCustomer translate="title" module="mshopb2b">
+                    	<title>Create Fixed Price For Customer</title>
+                        <method>checkCreateFixedPriceForCustomer</method>
+                        <acl>promotions/createfixedpriceforcustomer</acl>
+                    </checkCreateFixedPriceForCustomer>
+                    
+                    <checkCreateDiscountForCustomer translate="title" module="mshopb2b">
+                    	<title>Create Discount For Customer</title>
+                        <method>checkCreateDiscountForCustomer</method>
+                        <acl>promotions/creatediscountforcustomer</acl>
+                    </checkCreateDiscountForCustomer>
+                    
+                    <checkCreateDiscountCategoryForCustomer translate="title" module="mshopb2b">
+                    	<title>Create Discount For Customer For Given Category</title>
+                        <method>checkCreateDiscountCategoryForCustomer</method>
+                        <acl>promotions/creatediscountforcustomercategory</acl>
+                    </checkCreateDiscountCategoryForCustomer> 
+                    
+                    <checkCreateFixedPriceForCustomerGroup translate="title" module="mshopb2b">
+                    	<title>Create Fixed Price for Customer Group</title>
+                        <method>checkCreateFixedPriceForCustomerGroup</method>
+                        <acl>promotions/createfixedpriceforcustomergroup</acl>
+                    </checkCreateFixedPriceForCustomerGroup> 
+                    
+                    <checkCreateDiscountForCustomerGroup translate="title" module="mshopb2b">
+                    	<title>Create Discount for Customer Group</title>
+                        <method>checkCreateDiscountForCustomerGroup</method>
+                        <acl>promotions/creatediscountforcustomergroup</acl>
+                    </checkCreateDiscountForCustomerGroup>
+                    
+                    <checkCreateDiscountCategoryForCustomerGroup translate="title" module="mshopb2b">
+                    	<title>Create Discount on Category for Customer Group</title>
+                        <method>checkCreateDiscountCategoryForCustomerGroup</method>
+                        <acl>promotions/creatediscountcategoryforcustomergroup</acl>                   
+                    </checkCreateDiscountCategoryForCustomerGroup>
+                    
+                    <deleteDiscountRulesExcept translate="title" module="mshopb2b">
+                    	<title>Delete Discount Rules Except Passed</title>
+                        <method>deleteDiscountRule</method>
+                        <acl>promotions/deletediscountrule</acl>                   
+                    </deleteDiscountRulesExcept>
+                    
+                    <checkCreateDefaultDiscountForCustomer>
+                    	<title>Create rule for default discount on all prdoucts for customer</title>
+                        <method>checkCreateDefaultDiscountForCustomer</method>
+                        <acl>promotions/creatediscountforcustomer</acl>                   
+                    </checkCreateDefaultDiscountForCustomer>
+                    
+                    <applyDiscountRules>
+                    	<title>Apply Rules</title>
+                        <method>applyRules</method>
+                        <acl>promotions/applyRules</acl>                   
+                    </applyDiscountRules>
+                    
+              </methods>
+                <faults>
+                	<no_rules_found>
+                		 <code>100</code>
+                        <message>No catalog promotions where found.</message>
+                    </no_rules_found>
+                    
+                    <code_not_valid>
+                    	 <code>101</code>
+                        <message>Rule setting is  not valid.</message>
+                    </code_not_valid>
+                    
+                    <customer_group_not_exists>
+                    	 <code>102</code>
+                        <message>Customer group is  not valid.</message>
+                    </customer_group_not_exists>
+                    
+                    <customerids_array_not_passed>
+                    	 <code>103</code>
+                        <message>Customer ids should be passed as array.</message>
+                    </customerids_array_not_passed>
+                
+                	<website_not_exists>
+                    	 <code>104</code>
+                        <message>Website not exists.</message>
+                    </website_not_exists>
+                    
+                    <websiteids_array_not_passed>
+                    	 <code>105</code>
+                        <message>Website ids should be passed as array.</message>
+                    </websiteids_array_not_passed>
+                    
+                    <not_created>
+                    	 <code>106</code>
+                        <message>Rule is not created.</message>
+                    </not_created>
+                    
+                    <rule_not_exists>
+                    	 <code>107</code>
+                        <message>Rule not exists.</message>
+                    </rule_not_exists>
+                    
+                    <customerids_array_not_passed>
+                    	 <code>108</code>
+                        <message>Customer ids should be passed as array.</message>
+                    </customerids_array_not_passed>
+                    
+                    <module_not_installed>
+                    	 <code>109</code>
+                        <message>Ecomwise_Customerpromotions module not installed.</message>
+                    </module_not_installed>
+                    
+                    <mapping_table_not_present>
+                    	 <code>110</code>
+                        <message>Mapping table not present.</message>
+                    </mapping_table_not_present>
+                    
+                     <no_customers>
+                    	 <code>111</code>
+                        <message>There are no individual customers for this rule.</message>
+                    </no_customers>
+                    
+                    <array_not_pased>
+                 	    <code>112</code>
+                   	 	<message>Rule ids should be passed as array </message>
+                 	</array_not_pased>
+                 	
+                 	<array_not_allowed>
+                 	    <code>113</code>
+                   	 	<message>A single string representing product SKU should be passed</message>
+                 	</array_not_allowed>
+                 	
+                 	<no_products_assigned_to_category>
+                 	    <code>114</code>
+                   	 	<message>There are no products assigned to this category</message>
+                 	</no_products_assigned_to_category>
+                </faults>
+            </mshop_promotions>
+			<!-- end promotions methods -->
+		</resources>
+		<resources_alias>
+			<m_customer>mshop_m_customer</m_customer>
+			<mamut>mshop_mamut</mamut>
+			<credit>mshop_credit</credit>
+			<promotions>mshop_promotions</promotions>  
+		</resources_alias>
+		<v2>
+            <resources_function_prefix>
+            	<credit>mshopCredit</credit>
+                <mamut>mshopMamut</mamut>
+                <m_customer>mshopMCustomer</m_customer>
+                <promotions>mshopPromotions</promotions> 
+			</resources_function_prefix>
+        </v2>
+		<acl>
+			<resources>
+				<ecomwise translate="title" module="mshopb2b">
+					<title>Ecomwise</title>
+					<sort_order>100</sort_order>
+					<mshopb2b translate="title" module="mshopb2b">
+						<title>MshopB2B Api</title>
+						<sort_order>100</sort_order>
+						<mamut translate="title" module="mshopb2b">
+							<title>Api Mamut Methods</title>
+							<sort_order>101</sort_order>
+						</mamut>
+						<credit translate="title" module="mshopb2b">
+							<title>Api Customer Credit Methods</title>
+							<sort_order>102</sort_order>
+						</credit>
+						<promotions translate="title" module="mshopb2b">
+							<title>Api Promotions Methods</title>
+							<sort_order>103</sort_order>
+								<createfixedpriceforcustomer translate="title" module="mshopb2b">
+									<title>Create Fixed Price For Customer</title>
+								</createfixedpriceforcustomer>
+								
+								<creatediscountforcustomer  translate="title" module="mshopb2b">
+									<title>Create Discount For Customer</title>
+								</creatediscountforcustomer>
+								
+								<creatediscountforcustomercategory translate="title" module="mshopb2b">
+									<title>Create Discount For Customer For Given Category</title>
+								</creatediscountforcustomercategory>
+								
+								<createfixedpriceforcustomergroup translate="title" module="mshopb2b">
+									<title>Create Fixed Price For Customer Group</title>
+								</createfixedpriceforcustomergroup>
+								
+								<creatediscountforcustomergroup translate="title" module="mshopb2b">
+									<title>Create Discount for Customer Group</title>
+								</creatediscountforcustomergroup>
+								
+								<creatediscountcategoryforcustomergroup translate="title" module="mshopb2b">
+									<title>Create Discount on Category For Customer Group</title>
+								</creatediscountcategoryforcustomergroup>
+								
+								<deletediscountrule translate="title" module="mshopb2b">
+									<title>Delete Discount Rule</title>
+								</deletediscountrule>
+								
+								<applyRules translate="title" module="mshopb2b">
+									<title>Apply Discount Rules</title>
+								</applyRules>
+								
+						</promotions>
+						<customer>
+						
+						</customer>
+					 </mshopb2b>
+				</ecomwise>
+			</resources>
+		</acl>
+	</api>
+</config>

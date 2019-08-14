@@ -1,0 +1,886 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns:typens="urn:{{var wsdl.name}}" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/"
+	name="{{var wsdl.name}}" targetNamespace="urn:{{var wsdl.name}}">
+	<types>
+		<schema xmlns="http://www.w3.org/2001/XMLSchema"
+			targetNamespace="urn:Magento">
+			<import namespace="http://schemas.xmlsoap.org/soap/encoding/"
+				schemaLocation="http://schemas.xmlsoap.org/soap/encoding/" />
+			<!-- Customer -->
+			
+			<complexType name="customerCustomerCreateEntity">
+                <all>
+                	<element name="mamut_id" type="xsd:int" minOccurs="0" />
+                    <element name="customerEntity" type="typens:customerCustomerEntityToCreate" minOccurs="0" />
+                    <element name="mamut_contact_groups" type="typens:ArrayOfString" minOccurs="0" />
+                </all>
+            </complexType>
+            
+            <complexType name="customerCustomerCreateAddressEntityArray">
+                <complexContent>
+                    <restriction base="soapenc:Array">
+                        <attribute ref="soapenc:arrayType" wsdl:arrayType="typens:customerAddressEntityCreate[]" />
+                    </restriction>
+                </complexContent>
+            </complexType>
+            
+
+			<complexType name="customerCustomerEntityToCreate">
+				<all>
+					<element name="customer_id" type="xsd:int" minOccurs="0" />
+					<element name="email" type="xsd:string" minOccurs="0" />
+					<element name="firstname" type="xsd:string" minOccurs="0" />
+					<element name="lastname" type="xsd:string" minOccurs="0" />
+					<element name="password" type="xsd:string" minOccurs="0" />
+					<element name="website_id" type="xsd:int" minOccurs="0" />
+					<element name="store_id" type="xsd:int" minOccurs="0" />
+					<element name="group_id" type="xsd:int" minOccurs="0" />
+					<element name="taxvat" type="xsd:string" minOccurs="0" />
+				</all>
+			</complexType>
+			<complexType name="customerCustomerUpdateEntity">
+                <all>
+                	 <element name="customer_id" type="xsd:int" minOccurs="0" />
+                    <element name="mamut_id" type="xsd:int" minOccurs="0" />
+                    <element name="customerEntity" type="typens:customerCustomerEntityToCreate" minOccurs="0" />
+                    <element name="mamut_contact_groups" type="typens:ArrayOfString" minOccurs="0" />
+                </all>
+            </complexType>
+            <complexType name="customerCustomerUpdateAddressEntityArray">
+                <complexContent>
+                    <restriction base="soapenc:Array">
+                        <attribute ref="soapenc:arrayType" wsdl:arrayType="typens:customerCustomerUpdateAddressEntity[]" />
+                    </restriction>
+                </complexContent>
+            </complexType>
+            <complexType name="customerCustomerUpdateAddressEntity">
+                <all>
+                   <element name="address_id" type="xsd:int" minOccurs="0" />
+                   <element name="addressEntity" type="typens:customerAddressEntityCreate" minOccurs="0" />
+                </all>
+            </complexType>
+            
+            <complexType name="mshopCustomerUpdateEntity">
+                <all>
+                    <element name="mamut_id" type="xsd:int" minOccurs="0" />
+                    <element name="mamut_contact_groups" type="typens:ArrayOfString" minOccurs="0" />
+					<element name="email" type="xsd:string" minOccurs="0" />
+					<element name="firstname" type="xsd:string" minOccurs="0" />
+					<element name="lastname" type="xsd:string" minOccurs="0" />
+					<element name="password" type="xsd:string" minOccurs="0" />
+					<element name="website_id" type="xsd:int" minOccurs="0" />
+					<element name="store_id" type="xsd:int" minOccurs="0" />
+					<element name="group_id" type="xsd:int" minOccurs="0" />
+					<element name="taxvat" type="xsd:string" minOccurs="0" />
+                </all>
+            </complexType>
+             <complexType name="mshopAddressUpdateEntityForDefaultBillingAddress">
+				<all>
+					<element name="city" type="xsd:string" minOccurs="0"/>
+					<element name="company" type="xsd:string" minOccurs="0"/>
+					<element name="country_id" type="xsd:string" minOccurs="0"/>
+					<element name="fax" type="xsd:string" minOccurs="0"/>
+					<element name="firstname" type="xsd:string" minOccurs="0"/>
+					<element name="lastname" type="xsd:string" minOccurs="0"/>
+					<element name="middlename" type="xsd:string" minOccurs="0"/>
+					<element name="postcode" type="xsd:string" minOccurs="0"/>
+					<element name="prefix" type="xsd:string" minOccurs="0"/>
+					<element name="region_id" type="xsd:int" minOccurs="0"/>
+					<element name="region" type="xsd:string" minOccurs="0"/>
+					<element name="street" type="typens:ArrayOfString" minOccurs="0"/>
+					<element name="suffix" type="xsd:string" minOccurs="0"/>
+					<element name="telephone" type="xsd:string" minOccurs="0"/>
+					<element name="is_default_billing" type="xsd:boolean" minOccurs="0"/>
+					<element name="is_default_shipping" type="xsd:boolean" minOccurs="0"/>
+				</all>>
+            </complexType>
+            <complexType name="mshopAddressUpdateEntityForDefaultShippingAddress">
+				<all>
+					<element name="city" type="xsd:string" minOccurs="0"/>
+					<element name="company" type="xsd:string" minOccurs="0"/>
+					<element name="country_id" type="xsd:string" minOccurs="0"/>
+					<element name="fax" type="xsd:string" minOccurs="0"/>
+					<element name="firstname" type="xsd:string" minOccurs="0"/>
+					<element name="lastname" type="xsd:string" minOccurs="0"/>
+					<element name="middlename" type="xsd:string" minOccurs="0"/>
+					<element name="postcode" type="xsd:string" minOccurs="0"/>
+					<element name="prefix" type="xsd:string" minOccurs="0"/>
+					<element name="region_id" type="xsd:int" minOccurs="0"/>
+					<element name="region" type="xsd:string" minOccurs="0"/>
+					<element name="street" type="typens:ArrayOfString" minOccurs="0"/>
+					<element name="suffix" type="xsd:string" minOccurs="0"/>
+					<element name="telephone" type="xsd:string" minOccurs="0"/>
+					<element name="is_default_billing" type="xsd:boolean" minOccurs="0"/>
+					<element name="is_default_shipping" type="xsd:boolean" minOccurs="0"/>
+				</all>>
+            </complexType>
+			<!-- End customer -->
+			
+			<!-- Promotions -->
+
+			<complexType name="mshopPromotionsListCatalogPromotionsEntity">
+				<all>
+					<element name="rule_id" type="xsd:int" minOccurs="0" />
+					<element name="name" type="xsd:string" minOccurs="0" />
+					<element name="description" type="xsd:string" minOccurs="0" />
+					<element name="from_date" type="xsd:string" minOccurs="0" />
+					<element name="to_date" type="xsd:string" minOccurs="0" />
+					<element name="customer_group_ids" type="xsd:string"
+						minOccurs="0" />
+					<element name="is_active" type="xsd:int" minOccurs="0" />
+					<element name="stop_rules_processing" type="xsd:int"
+						minOccurs="0" />
+					<element name="sort_order" type="xsd:int" minOccurs="0" />
+					<element name="simple_action" type="xsd:string" minOccurs="0" />
+					<element name="discount_amount" type="xsd:float" minOccurs="0" />
+					<element name="website_ids" type="xsd:string" minOccurs="0" />
+				</all>
+			</complexType>
+
+			<complexType name="mshopPromotionsListCatalogPromotionsEntityArray">
+				<complexContent>
+					<restriction base="soapenc:Array">
+						<attribute ref="soapenc:arrayType"
+							wsdl:arrayType="typens:mshopPromotionsListCatalogPromotionsEntity[]" />
+					</restriction>
+				</complexContent>
+			</complexType>
+
+			<complexType name="mshopPromotionsCreateCatalogRuleEntity">
+				<all>
+					<element name="name" type="xsd:string" minOccurs="0" />
+					<element name="description" type="xsd:string" minOccurs="0" />
+					<element name="from_date" type="xsd:string" minOccurs="0" />
+					<element name="to_date" type="xsd:string" minOccurs="0" />
+					<element name="conditions_serialized" type="xsd:string"
+						minOccurs="0" />
+					<element name="actions_serialized" type="xsd:string"
+						minOccurs="0" />
+					<element name="is_active" type="xsd:int" minOccurs="0" />
+					<element name="stop_rules_processing" type="xsd:int"
+						minOccurs="0" />
+					<element name="sort_order" type="xsd:int" minOccurs="0" />
+					<element name="simple_action" type="xsd:string" minOccurs="0" />
+					<element name="discount_amount" type="xsd:float" minOccurs="0" />
+				</all>
+			</complexType>
+
+			<complexType name="mshopPromotionsListCustomersForRuleEntity">
+				<all>
+					<element name="id" type="xsd:int" minOccurs="0" />
+					<element name="email" type="xsd:string" minOccurs="0" />
+					<element name="name" type="xsd:string" minOccurs="0" />
+
+				</all>
+			</complexType>
+
+			<complexType name="mshopPromotionsListCustomersForRuleEntityArray">
+				<complexContent>
+					<restriction base="soapenc:Array">
+						<attribute ref="soapenc:arrayType"
+							wsdl:arrayType="typens:mshopPromotionsListCustomersForRuleEntity[]" />
+					</restriction>
+				</complexContent>
+			</complexType>
+			<!-- end promotions -->
+
+		</schema>
+	</types>
+   <!-- customer credit -->
+	<message name="mshopCreditStopRequest">
+		<part name="sessionId" type="xsd:string" />
+		<part name="email" type="xsd:string" />
+		<part name="website_id" type="xsd:string" />
+	</message>
+
+	<message name="mshopCreditStopResponse">
+		<part name="status" type="xsd:boolean" /> 
+	</message>
+
+	<message name="mshopCreditUnblockRequest"> 
+		<part name="sessionId" type="xsd:string" />
+		<part name="email" type="xsd:string" />
+		<part name="website_id" type="xsd:string" />
+	</message>
+
+	<message name="mshopCreditUnblockResponse">
+		<part name="status" type="xsd:boolean" /> 
+	</message>
+	   
+   <!-- end customer credit -->
+	
+	<!-- mamut -->
+
+	<message name="mshopMamutSetMamutIdRequest">
+		<part name="sessionId" type="xsd:string" />
+		<part name="mamutId4" type="xsd:int" />
+		<part name="customerIds" type="xsd:int" />
+	</message>
+
+	<message name="mshopMamutSetMamutIdResponse">
+		<part name="bool" type="xsd:boolean" />
+	</message>
+
+	<message name="mshopMamutRemoveMamutMappingRequest">
+		<part name="sessionId" type="xsd:string" />
+		<part name="mamutId" type="xsd:int" />
+		<part name="customerId" type="xsd:int" />
+	</message>
+
+	<message name="mshopMamutRemoveMamutMappingResponse">
+		<part name="status" type="xsd:boolean" />
+	</message>
+	
+
+	<!-- customer -->
+	<message name="mshopMCustomerUpdatePreferedLocaleRequest">
+		<part name="sessionId" type="xsd:string" />
+		<part name="mamutId" type="xsd:int" />
+		<part name="preferedLocale" type="xsd:string" />
+		<!-- <part name="taxclassid" type="xsd:int" /> -->
+	</message>
+	
+	<message name="mshopMCustomerUpdatePreferedLocaleResponse">
+		<part name="bool" type="xsd:boolean" />
+	</message>
+	
+	<message name="mshopMCustomerCreateCustomerGroupRequest">
+		<part name="sessionId" type="xsd:string" />
+		<part name="groupname" type="xsd:string" />
+		<!-- <part name="taxclassid" type="xsd:int" /> -->
+	</message>
+	
+	<message name="mshopMCustomerUpdateRequest">
+		<part name="sessionId" type="xsd:string" />
+		<part name="customer_id" type="xsd:int" />
+		<part name="customerData" type="typens:mshopCustomerUpdateEntity" />
+		<part name="addressBillingData" type="typens:mshopAddressUpdateEntityForDefaultBillingAddress" />
+		<part name="addressShippingData" type="typens:mshopAddressUpdateEntityForDefaultShippingAddress" />
+	</message>
+
+	<message name="mshopMCustomerCreateCustomerGroupResponse">
+		<part name="bool" type="xsd:boolean" />
+	</message>
+	
+	<message name="mshopMCustomerUpdateResponse">
+		<part name="bool" type="xsd:boolean" />
+	</message>
+
+	<message name="mshopMCustomerAssignCustomerToGroupRequest">
+		<part name="sessionId" type="xsd:string" />
+		<part name="customerid" type="xsd:int" />
+		<part name="groupid" type="xsd:int" />
+	</message>
+
+	<message name="mshopMCustomerAssignCustomerToGroupResponse">
+		<part name="bool" type="xsd:boolean" />
+	</message>
+	
+	<message name="mshopMCustomerGetCustomersChangedSinceRequest">
+		<part name="sessionId" type="xsd:string" />
+        <part name="date" type="xsd:string" />
+	</message>
+
+	<message name="mshopMCustomerGetCustomersChangedSinceResponse">
+		<part name="result" type="typens:ArrayOfInt" />
+	</message>
+	
+	<message name="mshopMCustomerCreateRequest">
+		<part name="sessionId" type="xsd:string" />
+		<!-- <part name="customerData" type="typens:customerCustomerCreateEntity" /> -->
+		<part name="customerData" type="typens:mshopCustomerUpdateEntity" />
+		<part name="addressBillingData" type="typens:mshopAddressUpdateEntityForDefaultBillingAddress" />
+		<part name="addressShippingData" type="typens:mshopAddressUpdateEntityForDefaultShippingAddress" />
+	</message>
+	
+	<message name="mshopMCustomerCreateResponse">
+		<part name="customerId" type="xsd:string" />
+	</message>
+	
+<!-- end customer -->
+	
+    <!-- promotions -->
+
+	<message name="mshopPromotionsListCatalogPromotionsRequest">
+		<part name="sessionId" type="xsd:string" />
+	</message>
+
+	<message name="mshopPromotionsListCatalogPromotionsResponse">
+		<part name="catalogPromotions"
+			type="typens:mshopPromotionsListCatalogPromotionsEntityArray" />
+	</message>
+
+	<message name="mshopPromotionsCreateCatalogRuleRequest">
+		<part name="sessionId" type="xsd:string" />
+		<part name="ruleData" type="typens:mshopPromotionsCreateCatalogRuleEntity" />
+		<part name="customerGroupIds" type="typens:ArrayOfString" />
+		<part name="websiteIds" type="typens:ArrayOfString" />
+		<part name="applyRule" type="xsd:int" />
+		<part name="mamutID" type="xsd:int" />
+	</message>
+
+	<message name="mshopPromotionsCreateCatalogRuleResponse">
+		<part name="ruleId" type="xsd:int" />
+	</message>
+
+	<message name="mshopPromotionsAddIndividualCustomersRequest">
+		<part name="sessionId" type="xsd:string" />
+		<part name="customerIds" type="typens:ArrayOfString" />
+		<part name="ruleId" type="xsd:int" />
+	</message>
+
+	<message name="mshopPromotionsAddIndividualCustomersResponse">
+		<part name="status" type="xsd:string" />
+	</message>
+
+	<message name="mshopPromotionsRemoveIndividualCustomersRequest">
+		<part name="sessionId" type="xsd:string" />
+		<part name="customerIds" type="typens:ArrayOfString" />
+		<part name="ruleId" type="xsd:int" />
+	</message>
+
+	<message name="mshopPromotionsRemoveIndividualCustomersResponse">
+		<part name="status" type="xsd:string" />
+	</message>
+
+	<message name="mshopPromotionsListCustomersForRuleRequest">
+		<part name="sessionId" type="xsd:string" />
+		<part name="ruleId" type="xsd:int" />
+	</message>
+
+	<message name="mshopPromotionsListCustomersForRuleResponse">
+		<part name="catalogPromotions"
+			type="typens:mshopPromotionsListCustomersForRuleEntityArray" />
+	</message>
+
+	<message name="mshopPromotionsUpdateCatalogRuleRequest">
+		<part name="sessionId" type="xsd:string" />
+		<part name="ruleId" type="xsd:int" />
+		<part name="ruleData" type="typens:mshopPromotionsCreateCatalogRuleEntity" />
+		<part name="customerGroupIds" type="typens:ArrayOfString" />
+		<part name="websiteIds" type="typens:ArrayOfString" />
+		<part name="applyRule" type="xsd:int" />
+		<part name="mamutID" type="xsd:int" />
+	</message>
+
+	<message name="mshopPromotionsUpdateCatalogRuleResponse">
+		<part name="status" type="xsd:string" />
+	</message>
+
+	<message name="mshopPromotionsCheckCreateFixedPriceForCustomerRequest">
+		<part name="sessionId" type="xsd:string" />
+		<part name="mamutRuleId" type="xsd:int" />
+		<part name="mamutCustomerId" type="xsd:int" />
+		<part name="productSku" type="xsd:string" />
+		<part name="price" type="xsd:double" />
+	</message>
+
+	<message name="mshopPromotionsCheckCreateFixedPriceForCustomerResponse">
+		<part name="rule_id" type="xsd:int" />
+	</message>
+
+	<message name="mshopPromotionsCheckCreateDiscountForCustomerRequest">
+		<part name="sessionId" type="xsd:string" />
+		<part name="mamutRuleId" type="xsd:int" />
+		<part name="mamutCustomerId" type="xsd:int" />
+		<part name="productSku" type="xsd:string" />
+		<part name="discountPercentage" type="xsd:double" />
+	</message>
+
+	<message name="mshopPromotionsCheckCreateDiscountForCustomerResponse">
+		<part name="rule_id" type="xsd:int" />
+	</message>
+
+
+	<message name="mshopPromotionsCheckCreateDiscountCategoryForCustomerRequest">
+		<part name="sessionId" type="xsd:string" />
+		<part name="mamutRuleId" type="xsd:int" />
+		<part name="mamutCustomerId" type="xsd:int" />
+		<part name="categoryId" type="xsd:int" />
+		<part name="discountPercentage" type="xsd:double" />
+	</message>
+
+	<message
+		name="mshopPromotionsCheckCreateDiscountCategoryForCustomerResponse">
+		<part name="rule_id" type="xsd:int" />
+		<!-- <part name="rule_id" type="xsd:string" /> -->
+	</message>
+
+	<message name="mshopPromotionsCheckCreateFixedPriceForCustomerGroupRequest">
+		<part name="sessionId" type="xsd:string" />
+		<part name="mamutRuleId" type="xsd:int" />
+		<part name="customerGroup" type="xsd:string" />
+		<part name="productSku" type="xsd:string" />
+		<part name="price" type="xsd:double" />
+	</message>
+
+	<message name="mshopPromotionsCheckCreateFixedPriceForCustomerGroupResponse">
+		<part name="rule_id" type="xsd:int" />
+	</message>
+
+	<message name="mshopPromotionsCheckCreateDiscountForCustomerGroupRequest">
+		<part name="sessionId" type="xsd:string" />
+		<part name="mamutRuleId" type="xsd:int" />
+		<part name="customerGroup" type="xsd:string" />
+		<part name="productSku" type="xsd:string" />
+		<part name="discountPercentage" type="xsd:double" />
+	</message>
+
+	<message name="mshopPromotionsCheckCreateDiscountForCustomerGroupResponse">
+		<part name="rule_id" type="xsd:int" />
+	</message>
+
+	<message
+		name="mshopPromotionsCheckCreateDiscountCategoryForCustomerGroupRequest">
+		<part name="sessionId" type="xsd:string" />
+		<part name="mamutRuleId" type="xsd:int" />
+		<part name="customerGroup" type="xsd:string" />
+		<part name="categoryId" type="xsd:int" />
+		<part name="discountPercentage" type="xsd:double" />
+	</message>
+
+	<message
+		name="mshopPromotionsCheckCreateDiscountCategoryForCustomerGroupResponse">
+		<part name="rule_id" type="xsd:int" />
+	</message>
+
+	<message name="mshopPromotionsDeleteDiscountRulesExceptRequest">
+		<part name="sessionId" type="xsd:string" />
+		<part name="mamutRuleIds" type="typens:ArrayOfString" />
+	</message>
+
+	<message name="mshopPromotionsDeleteDiscountRulesExceptResponse">
+		<part name="bool" type="xsd:boolean" />
+	</message>
+	
+	<message name="mshopPromotionsCheckCreateDefaultDiscountForCustomerRequest">
+		<part name="sessionId" type="xsd:string" />
+		<part name="mamutRuleId" type="xsd:int" />
+		<part name="mamutCustomerId" type="xsd:int" />
+		<part name="discountPercentage" type="xsd:double" />
+	</message>
+
+	<message name="mshopPromotionsCheckCreateDefaultDiscountForCustomerResponse">
+		<part name="rule_id" type="xsd:int" />
+	</message>
+	
+	<message name="mshopPromotionsApplyDiscountRulesRequest">
+		<part name="sessionId" type="xsd:string" />
+	</message>
+
+	<message name="mshopPromotionsApplyDiscountRulesResponse">
+		<part name="status" type="xsd:boolean" />
+	</message>
+	
+
+	<!-- end promotions -->
+
+	<portType name="{{var wsdl.handler}}PortType">
+	
+	    <!-- customer credit -->
+        <operation name="mshopCreditStop">
+			<documentation>Blocks customer from shopping in magento</documentation>
+			<input message="typens:mshopCreditStopRequest" />
+			<output message="typens:mshopCreditStopResponse" />
+		</operation>
+
+		<operation name="mshopCreditUnblock">
+			<documentation>Removes customer shopping ban in magento</documentation>
+			<input message="typens:mshopCreditUnblockRequest" />
+			<output message="typens:mshopCreditUnblockResponse" />
+		</operation>
+        	
+        <!-- end customer credit -->  
+		
+		<!-- mamut -->
+
+		<operation name="mshopMamutSetMamutId">
+			<documentation>Set the mamut ID for given customer ID</documentation>
+			<input message="typens:mshopMamutSetMamutIdRequest" />
+			<output message="typens:mshopMamutSetMamutIdResponse" />
+		</operation>
+
+		<operation name="mshopMamutRemoveMamutMapping">
+			<documentation>Remove mamut to customer mapping</documentation>
+			<input message="typens:mshopMamutRemoveMamutMappingRequest" />
+			<output message="typens:mshopMamutRemoveMamutMappingResponse" />
+		</operation>
+		
+		
+		
+		
+
+		<!-- end mamut -->
+
+		<!-- customer -->
+		<operation name="mshopMCustomerUpdatePreferedLocale">
+			<documentation>Updates the prefered locale for the given customer
+			</documentation>
+			<input message="typens:mshopMCustomerUpdatePreferedLocaleRequest" />
+			<output message="typens:mshopMCustomerUpdatePreferedLocaleResponse" />
+		</operation>
+		
+		<operation name="mshopMCustomerCreateCustomerGroup">
+			<documentation>Create Customer Group by Name for given Tax Class Id
+			</documentation>
+			<input message="typens:mshopMCustomerCreateCustomerGroupRequest" />
+			<output message="typens:mshopMCustomerCreateCustomerGroupResponse" />
+		</operation>
+		
+		<operation name="mshopMCustomerUpdate">
+			<documentation>Update customer information and invoice and billing adress
+			</documentation>
+			<input message="typens:mshopMCustomerUpdateRequest" />
+			<output message="typens:mshopMCustomerUpdateResponse" />
+		</operation>
+
+		<operation name="mshopMCustomerAssignCustomerToGroup">
+			<documentation>Assigns a customer to a given customer group
+			</documentation>
+			<input message="typens:mshopMCustomerAssignCustomerToGroupRequest" />
+			<output message="typens:mshopMCustomerAssignCustomerToGroupResponse" />
+		</operation>
+		
+		<operation name="mshopMCustomerGetCustomersChangedSince">
+			<documentation>Get list of customers update since
+			</documentation>
+			<input message="typens:mshopMCustomerGetCustomersChangedSinceRequest" />
+			<output message="typens:mshopMCustomerGetCustomersChangedSinceResponse" />
+		</operation>
+		
+		<operation name="mshopMCustomerCreate">
+			<documentation>Create customer with invoice and billing address
+			</documentation>
+			<input message="typens:mshopMCustomerCreateRequest" />
+			<output message="typens:mshopMCustomerCreateResponse" />
+		</operation>
+	<!-- end customer -->
+
+
+		<!-- promotions -->
+
+		<operation name="mshopPromotionsCheckCreateFixedPriceForCustomer">
+			<documentation>Create Fixed Price For Customer</documentation>
+			<input
+				message="typens:mshopPromotionsCheckCreateFixedPriceForCustomerRequest" />
+			<output
+				message="typens:mshopPromotionsCheckCreateFixedPriceForCustomerResponse" />
+		</operation>
+
+		<operation name="mshopPromotionsCheckCreateDiscountForCustomer">
+			<documentation>Create Discount For Customer</documentation>
+			<input message="typens:mshopPromotionsCheckCreateDiscountForCustomerRequest" />
+			<output
+				message="typens:mshopPromotionsCheckCreateDiscountForCustomerResponse" />
+		</operation>
+
+		<operation name="mshopPromotionsCheckCreateDiscountCategoryForCustomer">
+			<documentation>Create Discount For Customer For Given Category
+			</documentation>
+			<input
+				message="typens:mshopPromotionsCheckCreateDiscountCategoryForCustomerRequest" />
+			<output
+				message="typens:mshopPromotionsCheckCreateDiscountCategoryForCustomerResponse" />
+		</operation>
+
+		<operation name="mshopPromotionsCheckCreateFixedPriceForCustomerGroup">
+			<documentation>Create fixed price for customer group</documentation>
+			<input
+				message="typens:mshopPromotionsCheckCreateFixedPriceForCustomerGroupRequest" />
+			<output
+				message="typens:mshopPromotionsCheckCreateFixedPriceForCustomerGroupResponse" />
+		</operation>
+
+		<operation name="mshopPromotionsCheckCreateDiscountForCustomerGroup">
+			<documentation>Create discount for customer group</documentation>
+			<input
+				message="typens:mshopPromotionsCheckCreateDiscountForCustomerGroupRequest" />
+			<output
+				message="typens:mshopPromotionsCheckCreateDiscountForCustomerGroupResponse" />
+		</operation>
+
+		<operation
+			name="mshopPromotionsCheckCreateDiscountCategoryForCustomerGroup">
+			<documentation>Create discount on category for customer group
+			</documentation>
+			<input
+				message="typens:mshopPromotionsCheckCreateDiscountCategoryForCustomerGroupRequest" />
+			<output
+				message="typens:mshopPromotionsCheckCreateDiscountCategoryForCustomerGroupResponse" />
+		</operation>
+
+
+		<operation name="mshopPromotionsDeleteDiscountRulesExcept">
+			<documentation>Delete Discount Rules Except Passed</documentation>
+			<input message="typens:mshopPromotionsDeleteDiscountRulesExceptRequest" />
+			<output message="typens:mshopPromotionsDeleteDiscountRulesExceptResponse" />
+		</operation>
+		
+		<operation name="mshopPromotionsCheckCreateDefaultDiscountForCustomer">
+			<documentation>Create rule for defualt discount on all product for customer</documentation>
+			<input message="typens:mshopPromotionsCheckCreateDefaultDiscountForCustomerRequest" />
+			<output message="typens:mshopPromotionsCheckCreateDefaultDiscountForCustomerResponse" />
+		</operation>
+		
+		<operation name="mshopPromotionsApplyDiscountRules">
+			<documentation>Apply Discount Rules</documentation>
+			<input message="typens:mshopPromotionsApplyDiscountRulesRequest" />
+			<output message="typens:mshopPromotionsApplyDiscountRulesResponse" />
+		</operation>
+	<!-- end promotions -->
+	</portType>
+	<binding name="{{var wsdl.handler}}Binding" type="typens:{{var wsdl.handler}}PortType">
+		<soap:binding style="rpc"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+			
+		<!-- Customer credit operations -->
+		<operation name="mshopCreditStop">
+			<soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+			<input>
+				<soap:body namespace="urn:{{var wsdl.name}}" use="encoded"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</input>
+			<output>
+				<soap:body namespace="urn:{{var wsdl.name}}" use="encoded"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</output>
+		</operation>
+		
+		<operation name="mshopCreditUnblock">
+			<soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+			<input>
+				<soap:body namespace="urn:{{var wsdl.name}}" use="encoded"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</input>
+			<output>
+				<soap:body namespace="urn:{{var wsdl.name}}" use="encoded"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</output>
+		</operation>
+	<!-- End customer credit operations  -->	
+			
+		<!-- prmotions operations -->
+
+		<operation name="mshopPromotionsCheckCreateFixedPriceForCustomer">
+			<soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+			<input>
+				<soap:body namespace="urn:{{var wsdl.name}}" use="encoded"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</input>
+			<output>
+				<soap:body namespace="urn:{{var wsdl.name}}" use="encoded"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</output>
+		</operation>
+
+		<operation name="mshopPromotionsCheckCreateDiscountForCustomer">
+			<soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+			<input>
+				<soap:body namespace="urn:{{var wsdl.name}}" use="encoded"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</input>
+			<output>
+				<soap:body namespace="urn:{{var wsdl.name}}" use="encoded"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</output>
+		</operation>
+
+		<operation name="mshopPromotionsCheckCreateDiscountCategoryForCustomer">
+			<soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+			<input>
+				<soap:body namespace="urn:{{var wsdl.name}}" use="encoded"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</input>
+			<output>
+				<soap:body namespace="urn:{{var wsdl.name}}" use="encoded"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</output>
+		</operation>
+
+		<operation name="mshopPromotionsCheckCreateFixedPriceForCustomerGroup">
+			<soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+			<input>
+				<soap:body namespace="urn:{{var wsdl.name}}" use="encoded"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</input>
+			<output>
+				<soap:body namespace="urn:{{var wsdl.name}}" use="encoded"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</output>
+		</operation>
+
+		<operation name="mshopPromotionsCheckCreateDiscountForCustomerGroup">
+			<soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+			<input>
+				<soap:body namespace="urn:{{var wsdl.name}}" use="encoded"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</input>
+			<output>
+				<soap:body namespace="urn:{{var wsdl.name}}" use="encoded"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</output>
+		</operation>
+
+		<operation
+			name="mshopPromotionsCheckCreateDiscountCategoryForCustomerGroup">
+			<soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+			<input>
+				<soap:body namespace="urn:{{var wsdl.name}}" use="encoded"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</input>
+			<output>
+				<soap:body namespace="urn:{{var wsdl.name}}" use="encoded"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</output>
+		</operation>
+
+		<operation name="mshopPromotionsDeleteDiscountRulesExcept">
+			<soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+			<input>
+				<soap:body namespace="urn:{{var wsdl.name}}" use="encoded"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</input>
+			<output>
+				<soap:body namespace="urn:{{var wsdl.name}}" use="encoded"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</output>
+		</operation>
+		
+		<operation name="mshopPromotionsCheckCreateDefaultDiscountForCustomer">
+			<soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+			<input>
+				<soap:body namespace="urn:{{var wsdl.name}}" use="encoded"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</input>
+			<output>
+				<soap:body namespace="urn:{{var wsdl.name}}" use="encoded"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</output>
+		</operation>
+		
+		
+		<operation name="mshopPromotionsApplyDiscountRules">
+			<soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+			<input>
+				<soap:body namespace="urn:{{var wsdl.name}}" use="encoded"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</input>
+			<output>
+				<soap:body namespace="urn:{{var wsdl.name}}" use="encoded"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</output>
+		</operation>
+		
+		
+		<!-- end prmotions operations -->
+		
+        <!-- mamut operations -->
+		<operation name="mshopMamutSetMamutId">
+			<soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+			<input>
+				<soap:body namespace="urn:{{var wsdl.name}}" use="encoded"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</input>
+			<output>
+				<soap:body namespace="urn:{{var wsdl.name}}" use="encoded"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</output>
+		</operation>
+		<operation name="mshopMamutRemoveMamutMapping">
+			<soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+			<input>
+				<soap:body namespace="urn:{{var wsdl.name}}" use="encoded"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</input>
+			<output>
+				<soap:body namespace="urn:{{var wsdl.name}}" use="encoded"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</output>
+		</operation>
+		
+		
+
+		<!-- customer operations -->
+		
+		<operation name="mshopMCustomerUpdatePreferedLocale">
+			<soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+			<input>
+				<soap:body namespace="urn:{{var wsdl.name}}" use="encoded"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</input>
+			<output>
+				<soap:body namespace="urn:{{var wsdl.name}}" use="encoded"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</output>
+		</operation>
+		
+		<operation name="mshopMCustomerCreateCustomerGroup">
+			<soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+			<input>
+				<soap:body namespace="urn:{{var wsdl.name}}" use="encoded"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</input>
+			<output>
+				<soap:body namespace="urn:{{var wsdl.name}}" use="encoded"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</output>
+		</operation>
+		
+		<operation name="mshopMCustomerUpdate">
+			<soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+			<input>
+				<soap:body namespace="urn:{{var wsdl.name}}" use="encoded"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</input>
+			<output>
+				<soap:body namespace="urn:{{var wsdl.name}}" use="encoded"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</output>
+		</operation>
+
+		<operation name="mshopMCustomerAssignCustomerToGroup">
+			<soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+			<input>
+				<soap:body namespace="urn:{{var wsdl.name}}" use="encoded"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</input>
+			<output>
+				<soap:body namespace="urn:{{var wsdl.name}}" use="encoded"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</output>
+		</operation>
+		
+		<operation name="mshopMCustomerGetCustomersChangedSince">
+			<soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+			<input>
+				<soap:body namespace="urn:{{var wsdl.name}}" use="encoded"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</input>
+			<output>
+				<soap:body namespace="urn:{{var wsdl.name}}" use="encoded"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</output>
+		</operation>
+		
+		<operation name="mshopMCustomerCreate">
+			<soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+			<input>
+				<soap:body namespace="urn:{{var wsdl.name}}" use="encoded"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</input>
+			<output>
+				<soap:body namespace="urn:{{var wsdl.name}}" use="encoded"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+			</output>
+		</operation>
+
+		<!-- end customer operations -->
+	</binding>
+	<service name="{{var wsdl.name}}Service">
+		<port name="{{var wsdl.handler}}Port" binding="typens:{{var wsdl.handler}}Binding">
+			<soap:address location="{{var wsdl.url}}" />
+		</port>
+	</service>
+</definitions>
