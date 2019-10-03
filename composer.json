@@ -1,16 +1,19 @@
 {
-    "name": "OpenMageModuleFostering/Ecomwise_MshopB2B",
+    "name": "OpenMageModuleFostering\/Ecomwise_MshopB2B",
     "type": "magento-module",
     "license": "OSL-3.0",
     "homepage": "",
     "description": "Ecomwise MshopB2B",
     "authors": [
-    {
-        "name": "EcomwiseTeam",
-        "email": "info@ecomwise.com"
-    }
-],
+        {
+            "name": "EcomwiseTeam",
+            "email": "info@ecomwise.com"
+        }
+    ],
     "suggest": {
-        "magento-hackathon/magento-composer-installer": "*"
-    }
+        "magento-hackathon\/magento-composer-installer": "*"
+    },
+    "keywords": [
+        "openmage-module"
+    ]
 }
